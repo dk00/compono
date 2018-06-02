@@ -1,11 +1,11 @@
-import {h} from 'web-app-scripts'
+import {h} from 'web-app-tools'
 import '../style'
-import codeReader from './code-reader'
-import codeList from './code-list'
+import {savedNumbers, addNumber} from './containers'
 
-export default props =>
+const app = () =>
 <div>
-  <script src="https://unpkg.com/jsqr@1.0.4/dist/jsQR.js"></script>
-  <code-reader />
-  <code-list />
+  <saved-numbers />
+  <add-number />
 </div>
+
+export default app

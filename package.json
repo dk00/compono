@@ -3,12 +3,10 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "rm www/precache* && webpack -p",
+    "start": "webpack-serve",
+    "build": "rimraf www/*js && webpack -p",
     "pretest": "npm run build",
-    "test": "nyc --instrument false lsc test",
-    "posttest": "nyc report -r lcov -r json",
-    "deploy": "npm t && firebase deploy"
+    "test": "nyc --instrument false --source-map false -r text -r html -r json -r lcovonly node test"
   },
   "repository": "dk00/code-reducer",
   "license": "Unlicense",
@@ -18,8 +16,10 @@
     "www"
   ],
   "devDependencies": {
-    "node-sass": "^4.9.0",
-    "web-app-scripts": "file:../web-base/web-app-scripts-0.0.1.tgz"
+    "rimraf": "^2.6.2",
+    "web-app-tools": "0.0.4",
+    "webpack": "^4.23.1",
+    "webpack-command": "^0.4.1"
   },
   "private": true
 }

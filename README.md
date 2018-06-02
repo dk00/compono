@@ -1,8 +1,3 @@
 # Code Reducer
 
-
-```html
-<capture camera={} onFrame={onFrame} />
-```
-
-`onFrame :: image -> action`
+Scan QR code to save invoice numbers and get notifications for prizes!
