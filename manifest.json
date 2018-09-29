@@ -1,0 +1,21 @@
+{
+  "name": "Compass",
+  "short_name": "Compass",
+  "theme_color": "#283621",
+  "background_color": "#000",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/?source=pwa",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
