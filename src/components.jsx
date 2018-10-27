@@ -11,7 +11,6 @@ const numberList = ({data = []}) =>
 
 const numberInput = ({value, onSubmit, onChange}) =>
 <form class="add-number" onSubmit={onSubmit}>
-  <button class="scan" type="button">Scan</button>
   <input value={value} onChange={onChange} placeholder="Add number" />
   <button hidden type="submit">Add</button>
 </form>

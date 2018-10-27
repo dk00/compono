@@ -3,11 +3,7 @@ import
   './app': app
 
 options =
-  actions:
-    * replace-collection id: \receipt model: \receipt models:
-        * id: 2 number: \000002
-        * id: 3 number: \000003
-    ...
+  actions: []
   init: if module.hot
     ({replace-app, replace-options}) ->
       module.hot.accept './app' -> replace-app app
