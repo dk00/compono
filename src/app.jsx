@@ -1,11 +1,17 @@
 import {h} from 'web-app-tools'
 import '../style'
-import {savedNumbers, addNumber} from './containers'
+import {firebaseLogin} from './firebase'
+import loginBlock from './login-block'
+import savedNumbers from './saved-numbers'
+import addNumber from './add-number'
 
 const app = () =>
 <div>
-  <saved-numbers />
-  <add-number />
+  <firebase-login render={loginBlock}>
+    logged in
+    <add-number />
+    <saved-numbers />
+  </firebase-login>
 </div>
 
 export default app

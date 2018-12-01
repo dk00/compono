@@ -9,9 +9,10 @@ const numberList = ({data = []}) =>
   )}
 </div>
 
-const numberInput = ({value, onSubmit, onChange}) =>
+const numberInput = ({number, date, onSubmit, onNumberChange, onDateChange}) =>
 <form class="add-number" onSubmit={onSubmit}>
-  <input value={value} onChange={onChange} placeholder="Add number" />
+  <input value={number} onChange={onNumberChange} placeholder="Add number" />
+  <input type="date" value={date} onChange={onDateChange} />
   <button hidden type="submit">Add</button>
 </form>
 
