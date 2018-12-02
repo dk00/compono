@@ -49,7 +49,7 @@ function use-realtime-updated collection
   ref = use-collection collection
   [data, set-data] = use-state []
   use-effect ->
-    ref.order-by \date \desc
+    ref.order-by \date \desc .limit 16
     .on-snapshot -> set-data it.docs.map -> it.data!
   , []
   data

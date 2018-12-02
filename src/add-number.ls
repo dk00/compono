@@ -7,11 +7,16 @@ function use-dom-input default-value=''
   [value, set-value] = use-state default-value
   * value, -> set-value it.target.value
 
-function today => new Date!toJSON!slice 0 10
+function local-date d
+  result = new Date d
+  result.set-minutes result.get-minutes! - result.get-timezone-offset!
+  result
+
+function local-today => local-date new Date .toJSON!slice 0 10
 
 function add-number
   [number, on-number-change] = use-dom-input!
-  [date, on-date-change] = use-dom-input today!
+  [date, on-date-change] = use-dom-input local-today!
   collection = use-collection \numbers
   on-submit = ->
     it.prevent-default!
