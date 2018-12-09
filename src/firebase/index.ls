@@ -30,6 +30,7 @@ function firebase-login {render, children}
     ensure-scripts scripts .then ->
       clear.current = firebase.auth!on-auth-state-changed ->
         set-user it
+      firebase.firestore!enable-persistence!
     -> clear.current!
   , []
   switch

@@ -10,8 +10,8 @@ const app = () =>
 <div>
   <firebase-login render={intro}>
     <header />
-    <invoices />
     <add-number />
+    <invoices />
   </firebase-login>
 </div>
 
