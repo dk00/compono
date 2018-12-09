@@ -35,11 +35,16 @@ function firebase-login {render, children}
   switch
   | user == \initializing-firebase => ''
   | !user
-    render login: ->
+    render sign-in: ->
       firebase.auth!sign-in-with-popup new firebase.auth.GoogleAuthProvider
   | _
     h firebase-context.Provider, value: {user, firebase},
       h Fragment,, children
+
+function use-auth
+  {user, firebase} = use-context firebase-context
+  user: user
+  sign-out: -> firebase.auth!sign-out!
 
 function use-collection collection
   {firebase, user: {uid}} = use-context firebase-context
@@ -54,4 +59,4 @@ function use-realtime-updated collection
   , []
   data
 
-export {firebase-login, use-collection, use-realtime-updated}
+export {firebase-login, use-auth, use-collection, use-realtime-updated}

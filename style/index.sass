@@ -4,6 +4,34 @@ html, body
   background: #000
   color: #ccc
 
+button
+  font-weight: bold
+  color: hotpink
+
+.app-bar
+  display: flex
+  padding: 0 0.5rem
+  height: 3rem
+  align-items: center
+
+  .user
+    margin-left: auto
+    height: 100%
+    display: flex
+    align-items: center
+    img
+      width: auto
+      height: calc(100% - 1rem)
+      border-radius: 100%
+      margin: 0 0.5rem
+
+.add-number
+  display: flex
+  input
+    flex: 1
+  input[type="date"]
+    flex: 8rem 0
+
 .number-list > div
   display: flex
   button
@@ -14,65 +42,3 @@ html, body
 .number-list > div, .add-number
   padding: 0.25rem 0.5rem
   border-bottom: 1px solid rgba(127, 127, 127, 0.5)
-
-.add-number
-  display: flex
-  input
-    flex: 1
-  input[type="date"]
-    flex: 8rem 0
-
-.code-reader
-  height: 100vh
-  > video
-    width: 100%
-    max-height: 100%
-
-  .capture
-    background: #050
-    height: 100%
-    &::before
-      display: block
-      padding: 1rem
-      content: 'capture'
-      font-size: 500%
-
-.capture-placeholder
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  height: 100%
-  font-size: 250%
-  color: #777
-  > div
-    text-align: center
-
-.code-list
-  display: flex
-  align-items: center
-  position: fixed
-  bottom: 0
-  background: #2227
-  width: 100%
-  padding: 0.5rem
-
-  .name
-    margin-right: 0.5rem
-  .code-detail
-    color: #777
-    flex: 1
-
-.aim
-  position: fixed
-  background: pink
-
-  @media(min-width: 600px)
-    left: 50%
-    width: 0.1rem
-    height: 100vh
-
-  @media(max-width: (600px - 0.01))
-    top: 50%
-    height: 0.1rem
-    width: 100vw

@@ -1,16 +1,17 @@
 import {h} from 'web-app-tools'
 import '../style'
 import {firebaseLogin} from './firebase'
-import loginBlock from './login-block'
-import savedNumbers from './saved-numbers'
+import {intro} from './components'
+import header from './header'
 import addNumber from './add-number'
+import invoices from './invoices'
 
 const app = () =>
 <div>
-  <firebase-login render={loginBlock}>
-    logged in
+  <firebase-login render={intro}>
+    <header />
+    <invoices />
     <add-number />
-    <saved-numbers />
   </firebase-login>
 </div>
 

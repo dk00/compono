@@ -1,5 +1,22 @@
 import {h} from 'web-app-tools'
 
+const intro = ({signIn}) =>
+<div class="intro">
+  <p>
+    儲存發票號碼, 自動通知中獎!    
+  </p>
+  <button onClick={signIn}>開始使用</button>
+</div>
+
+const appBar = ({photoURL, signOut}) =>
+<div class="app-bar">
+  <h3>Invoices</h3>
+  <div class="user">
+    <img src={photoURL} />
+    <button onClick>Sign Out</button>
+  </div>
+</div>
+
 const numberList = ({data = []}) =>
 <div class="number-list">
   {data.map(({number, remove}) =>
@@ -17,4 +34,4 @@ const numberInput = ({number, date, onSubmit, onNumberChange, onDateChange}) =>
   <button hidden type="submit">Add</button>
 </form>
 
-export {numberList, numberInput}
+export {intro, appBar, numberList, numberInput}
