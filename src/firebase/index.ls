@@ -4,6 +4,8 @@ import
 
 firebase-context = create-context {}
 
+function use-firebase => use-context firebase-context
+
 scripts =
   '/__/firebase/5.5.8/firebase-app.js'
   '/__/firebase/5.5.8/firebase-auth.js'
@@ -47,12 +49,14 @@ function use-auth
   user: user
   sign-out: -> firebase.auth!sign-out!
 
-function use-collection collection
-  {firebase, user: {uid}} = use-context firebase-context
+function get-collection {firebase, user: {uid}} collection
   firebase.firestore!collection \users .doc uid .collection collection
 
-function use-realtime-updated collection
-  ref = use-collection collection
+function use-collection collection
+  get-collection use-firebase!, collection
+
+function use-user-data collection
+  ref = get-collection use-firebase!, collection
   [data, set-data] = use-state []
   use-effect ->
     ref.order-by \date \desc .limit 16
@@ -60,4 +64,4 @@ function use-realtime-updated collection
   , []
   data
 
-export {firebase-login, use-auth, use-collection, use-realtime-updated}
+export {firebase-login, use-auth, use-firebase, use-user-data, use-collection}

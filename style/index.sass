@@ -6,7 +6,8 @@ html, body
 
 button
   font-weight: bold
-  color: hotpink
+
+$theme: #E65D84
 
 .app-bar
   display: flex
@@ -31,9 +32,31 @@ button
     flex: 1
   input[type="date"]
     flex: 8rem 0
+    color: #fff
+
+  .actions
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    width: 100%
+    display: flex
+    .space
+      margin-left: auto
+
+  .add
+    display: block
+    background: $theme
+    padding: 0.5rem
+    font-size: 125%
+
+  input[value=""]
+    + .actions .add
+      display: none
 
 .number-list > div
   display: flex
+  font-family: monospace
   button
     margin-left: auto
   .remove

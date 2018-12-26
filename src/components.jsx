@@ -13,15 +13,15 @@ const appBar = ({photoURL, signOut}) =>
   <h3>Invoices</h3>
   <div class="user">
     <img src={photoURL} />
-    <button onClick>Sign Out</button>
+    <button onClick={signOut}>Sign Out</button>
   </div>
 </div>
 
 const numberList = ({data = []}) =>
 <div class="number-list">
   {data.map(({number, remove}) =>
-    <div>
-      {number}
+    <div key={number}>
+      <h3>{number}</h3>
       <button class="remove" onClick={remove}>X</button>
     </div>
   )}
@@ -31,7 +31,11 @@ const numberInput = ({number, date, onSubmit, onNumberChange, onDateChange}) =>
 <form class="add-number" onSubmit={onSubmit}>
   <input type="date" value={date} onChange={onDateChange} />
   <input value={number} onChange={onNumberChange} placeholder="Add number" />
-  <button hidden type="submit">Add</button>
+  <div class="actions">
+    <div class="space">
+    </div>
+    <button type="submit" class="add">Add</button>
+  </div>
 </form>
 
 export {intro, appBar, numberList, numberInput}
