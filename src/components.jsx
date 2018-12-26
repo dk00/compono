@@ -3,7 +3,7 @@ import {h} from 'web-app-tools'
 const intro = ({signIn}) =>
 <div class="intro">
   <p>
-    儲存發票號碼, 自動通知中獎!    
+    儲存發票號碼, 自動通知中獎!
   </p>
   <button onClick={signIn}>開始使用</button>
 </div>
@@ -17,13 +17,21 @@ const appBar = ({photoURL, signOut}) =>
   </div>
 </div>
 
-const numberList = ({data = []}) =>
+const numberEntry = ({number, remove}) =>
+<div>
+  <h3>{number}</h3>
+  <button class="remove" onClick={remove}>X</button>
+</div>
+
+const numberList = ({data, issues: {current, prev}}) =>
 <div class="number-list">
-  {data.map(({number, remove}) =>
-    <div key={number}>
-      <h3>{number}</h3>
-      <button class="remove" onClick={remove}>X</button>
-    </div>
+  <div>{current.name}</div>
+  {(data.current || []).map(item =>
+    <number-entry key={item.number} {...item} />
+  )}
+  <div>{prev.name}</div>
+  {(data.prev || []).map(item =>
+    <number-entry key={item.number} {...item} />
   )}
 </div>
 

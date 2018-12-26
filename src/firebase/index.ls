@@ -2,6 +2,8 @@ import
   react: {create-context, Fragment}
   'web-app-tools': {h, use-state, use-effect, use-ref, use-context}
 
+function identity => it
+
 firebase-context = create-context {}
 
 function use-firebase => use-context firebase-context
@@ -55,12 +57,12 @@ function get-collection {firebase, user: {uid}} collection
 function use-collection collection
   get-collection use-firebase!, collection
 
-function use-user-data collection
+function use-user-data collection, apply-options=identity
   ref = get-collection use-firebase!, collection
   [data, set-data] = use-state []
   use-effect ->
-    ref.order-by \date \desc .limit 16
-    .on-snapshot -> set-data it.docs.map -> it.data!
+    apply-options ref .on-snapshot ->
+      set-data it.docs.map -> it.data!
   , []
   data
 
