@@ -57,8 +57,7 @@ function get-collection {firebase, user: {uid}} collection
 function use-collection collection
   get-collection use-firebase!, collection
 
-function use-user-data collection, apply-options=identity
-  ref = get-collection use-firebase!, collection
+function use-realtime-update ref, apply-options
   [data, set-data] = use-state []
   use-effect ->
     apply-options ref .on-snapshot ->
@@ -66,4 +65,15 @@ function use-user-data collection, apply-options=identity
   , []
   data
 
-export {firebase-login, use-auth, use-firebase, use-user-data, use-collection}
+function use-user-data collection, apply-options=identity
+  ref = get-collection use-firebase!, collection
+  use-realtime-update ref, apply-options
+
+function use-shared-data collection, apply-options=identity
+  ref = use-firebase!firebase.firestore!collection collection
+  use-realtime-update ref, apply-options
+
+export {
+  firebase-login
+  use-auth, use-user-data, use-shared-data, use-collection
+}

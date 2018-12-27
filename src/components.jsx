@@ -17,9 +17,12 @@ const appBar = ({photoURL, signOut}) =>
   </div>
 </div>
 
-const numberEntry = ({number, remove}) =>
+const numberEntry = ({number, match, remove}) =>
 <div>
-  <h3>{number}</h3>
+  <h1>{number.slice(0, number.length - match)}</h1>
+  {match > 0 &&
+    <div class="match">{number.slice(-match)}</div>
+  }
   <button class="remove" onClick={remove}>X</button>
 </div>
 

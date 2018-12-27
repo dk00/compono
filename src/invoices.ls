@@ -1,6 +1,7 @@
 import
-  './firebase': {use-collection, use-user-data}
+  './firebase': {use-collection, use-user-data, use-shared-data}
   './components': {number-list}
+  './match-number': match-number
 
 function pack-entry values, saved
   {...values, remove: -> saved.doc values.number .delete!}
@@ -25,13 +26,23 @@ function in-range ref, issue
   .where \date \< issue.end
   .limit 16
 
+function use-numbers issue, saved
+  winning = use-shared-data \winning-numbers ->
+    it.where \issue \== issue.name
+  data = use-user-data \numbers (ref) -> in-range ref, issue
+  data.map -> {
+    ...it
+    match: match-number it.number, winning
+    remove: (_) -> saved.doc it.number .delete!
+  }
+
 function invoices
   saved = use-collection \numbers
   issues =
     current: get-issue!
     prev: get-issue -1
-  current = use-user-data \numbers (ref) -> in-range ref, issues.current
-  prev = use-user-data \numbers (ref) -> in-range ref, issues.prev
+  current = use-numbers issues.current, saved
+  prev = use-numbers issues.prev, saved
   props =
     data: {current, prev}
     issues: issues
