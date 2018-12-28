@@ -38,16 +38,29 @@ const numberList = ({data, issues: {current, prev}}) =>
   )}
 </div>
 
-const numberInput = ({number, date, onSubmit, onNumberChange, onDateChange}) =>
+const numberInput = ({
+  number, date, onSubmit, onNumberChange, onDateChange,
+  reader, toggleReader
+}) =>
 <form class="add-number" onSubmit={onSubmit}>
   <input type="date" value={date} onChange={onDateChange} />
   <input value={number} onChange={onNumberChange} required
     title="Enter number here" placeholder="Format: XX-12345678" />
   <div class="actions">
-    <button type="button" class="reader"></button>
+    <button type="button" class={`reader ${reader? ' active': ''}`}
+      onClick={toggleReader}>
+    </button>
     <button type="submit" class="add"></button>
   </div>
-
 </form>
 
-export {intro, appBar, numberList, numberInput}
+const readerPreview = ({videoRef}) =>
+<div class="reader">
+  {videoRef?
+    <video autoPlay ref={videoRef} />:
+    <p>Grant permission to read numbers from invoices with the camera</p>
+  }
+  <div class="aim"></div>
+</div>
+
+export {intro, appBar, numberList, numberInput, readerPreview}

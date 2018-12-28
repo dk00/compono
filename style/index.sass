@@ -7,7 +7,7 @@ html, body
 button
   font-weight: bold
 
-$theme: #E65D84
+$theme: #e65d84
 
 .app-bar
   display: flex
@@ -39,6 +39,7 @@ $theme: #E65D84
     position: fixed
     bottom: 0
     right: 0
+    z-index: 1
     display: flex
     .add, .reader
       align-items: center
@@ -55,7 +56,7 @@ $theme: #E65D84
       background-color: #777
       &:before
         content: '📷'
-      &:active
+      &.active
         background-color: $theme
 
   input
@@ -69,6 +70,17 @@ $theme: #E65D84
       &[value=""] + .actions .add
         background-color: #777
 
+.reader
+  position: relative
+  video
+    width: 100%
+  .aim
+    position: absolute
+    top: 15%
+    left: 7%
+    right: 7%
+    height: 20%
+    border: 7px dashed #77e65d84
 
 .number-list > div
   display: flex

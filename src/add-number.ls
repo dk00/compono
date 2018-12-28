@@ -1,6 +1,7 @@
 import
   'web-app-tools': {use-state}
   './firebase': {use-collection}
+  './hooks': {use-model}
   './components': {number-list, number-input}
 
 function use-dom-input default-value=''
@@ -18,11 +19,17 @@ function add-number
   [number, on-number-change] = use-dom-input!
   [date, on-date-change] = use-dom-input local-today!
   collection = use-collection \numbers
+  [input-options, update-input-options] = use-model \input-options
   on-submit = ->
     it.prevent-default!
     collection.doc number .set {number, date}
     on-number-change target: value: ''
+  reader = input-options.reader
+  toggle-reader = -> update-input-options reader: !reader
 
-  number-input {number, on-number-change, date, on-date-change, on-submit}
+  number-input {
+    number, on-number-change, date, on-date-change, on-submit
+    reader, toggle-reader
+  }
 
 export default: add-number
