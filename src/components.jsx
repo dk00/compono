@@ -41,12 +41,13 @@ const numberList = ({data, issues: {current, prev}}) =>
 const numberInput = ({number, date, onSubmit, onNumberChange, onDateChange}) =>
 <form class="add-number" onSubmit={onSubmit}>
   <input type="date" value={date} onChange={onDateChange} />
-  <input value={number} onChange={onNumberChange} placeholder="Add number" />
+  <input value={number} onChange={onNumberChange} required
+    title="Enter number here" placeholder="Format: XX-12345678" />
   <div class="actions">
-    <div class="space">
-    </div>
-    <button type="submit" class="add">Add</button>
+    <button type="button" class="reader"></button>
+    <button type="submit" class="add"></button>
   </div>
+
 </form>
 
 export {intro, appBar, numberList, numberInput}

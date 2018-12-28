@@ -28,31 +28,47 @@ $theme: #E65D84
 
 .add-number
   display: flex
+
   input
     flex: 1
   input[type="date"]
     flex: 8rem 0
     color: #fff
 
-  .actions
+  input + .actions
     position: fixed
     bottom: 0
-    left: 0
     right: 0
-    width: 100%
     display: flex
-    .space
-      margin-left: auto
+    .add, .reader
+      align-items: center
+      justify-content: center
+      width: 5rem
+      height: 5rem
+      margin: 1rem
+      border-radius: 20rem
+      &:before
+        align-self: center
+        font-size: 250%
+        font-weight: bold
+    .reader
+      background-color: #777
+      &:before
+        content: '📷'
+      &:active
+        background-color: $theme
 
-  .add
-    display: block
-    background: $theme
-    padding: 0.5rem
-    font-size: 125%
-
-  input[value=""]
+  input
     + .actions .add
-      display: none
+      background-color: $theme
+    &:not(:focus) + .actions .add:before
+      content: '+'
+    &:focus
+      + .actions .add:before
+        content: '✓'
+      &[value=""] + .actions .add
+        background-color: #777
+
 
 .number-list > div
   display: flex
