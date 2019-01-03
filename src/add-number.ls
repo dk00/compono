@@ -1,35 +1,28 @@
 import
   'web-app-tools': {use-state}
   './firebase': {use-collection}
+  './utils': {feedback}
   './hooks': {use-model}
   './components': {number-list, number-input}
 
-function use-dom-input default-value=''
-  [value, set-value] = use-state default-value
-  * value, -> set-value it.target.value
-
-function local-date d
-  result = new Date d
-  result.set-minutes result.get-minutes! - result.get-timezone-offset!
-  result
-
-function local-today => local-date new Date .toJSON!slice 0 10
+function model-input values, set-values, keys
+  Object.assign ...keys.map (key) ->
+    "#{key}InputProps": value: values[key] || '', on-change: ->
+      set-values (key): it.target.value
 
 function add-number
-  [number, on-number-change] = use-dom-input!
-  [date, on-date-change] = use-dom-input local-today!
   collection = use-collection \numbers
-  [input-options, update-input-options] = use-model \input-options
+  [user-input, set-user-input] = use-model \user-input
+  {number, date, reader} = user-input
+  toggle-reader = -> set-user-input reader: !reader
   on-submit = ->
+    feedback!
     it.prevent-default!
     collection.doc number .set {number, date}
-    on-number-change target: value: ''
-  reader = input-options.reader
-  toggle-reader = -> update-input-options reader: !reader
-
+    set-user-input number: ''
   number-input {
-    number, on-number-change, date, on-date-change, on-submit
-    reader, toggle-reader
+    ...model-input user-input, set-user-input, [\date \number]
+    reader, toggle-reader, on-submit
   }
 
 export default: add-number

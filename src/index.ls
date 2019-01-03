@@ -1,15 +1,14 @@
 import
-  \web-app-tools : {start-app, replace-collection}
+  'web-app-tools': {start-app, update-model}
   './app': app
+  './utils': {local-today}
+  './create-worker': create-worker
 
 options =
-  actions: []
+  actions: [update-model id: \user-input values: date: local-today!]
   init: if module.hot
     ({replace-app, replace-options}) ->
       module.hot.accept './app' -> replace-app app
 
-if global.Worker
-  ocrad-worker = '/ocrad-worker.js'
-  global.ocrad = new Worker ocrad-worker
-
 start-app app, options
+create-worker! if global.Worker

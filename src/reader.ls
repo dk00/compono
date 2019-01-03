@@ -1,5 +1,6 @@
 import
   'web-app-tools': {use-state, use-effect, use-ref}
+  './utils': {feedback}
   './hooks': {use-model}
   './components': {reader-preview}
 
@@ -9,11 +10,12 @@ function h type, attributes
   element
 
 function get-image video
+  return if !(video?video-width > 0)
   crop = 0.07
   width = video.video-width * (1 - 2*crop)
-  height = video.video-height * 0.2
+  height = video.video-height * 0.15
   sx = video.video-width * crop
-  sy = video.video-height * crop
+  sy = video.video-height * 0.15
 
   canvas = h \canvas {width, height}
   context = canvas.get-context \2d
@@ -25,24 +27,58 @@ function get-camera-stream
 
 function stop-camera => it?get-tracks!for-each -> it.stop!
 
-function use-camera enabled
-  [preview, set-preview] = use-state!
+function use-camera {enabled}
+  preview = use-ref!
   video = use-ref!
+  update-ref = ->
+    if video.current && preview.current && video.current.src-object != preview.current
+      video.current.src-object = preview.current
   use-effect ->
-    clean-up = -> stop-camera preview, video
-    if enabled then get-camera-stream!then -> set-preview it
+    clean-up = -> stop-camera preview.current, video.current
+    if enabled then get-camera-stream!then ->
+      preview.current = it
+      update-ref!
     else clean-up!
     clean-up
   , [enabled]
   ref = ->
     if it
       video.current = it
-      it.src-object = preview
+      update-ref!
   * video, ref
 
+function is-playing video
+  !video.paused && !video.ended &&
+  video.current-time > 0 && video.ready-state > 2
+
+ocrad-options = [\upper_num_only]
+
+function read-number video, emit
+  return if !is-playing video
+  data = get-image video
+  if data
+    ocrad data, ocrad-options .then emit .then -> read-number video, emit
+
+function extract-number
+  it.match /\d{8}/ ?.0
+
 function reader
-  [options] = use-model \input-options
-  [video, video-ref] = use-camera options.reader
-  if options.reader then reader-preview {video-ref} else ''
+  [options, set-options] = use-model \user-input
+  [video, video-ref] = use-camera enabled: options.reader
+  [ready, set-ready] = use-state!
+  last = use-ref {}
+  last.current.number = options.number
+  use-effect !->
+    ready && read-number video.current, ->
+      if it != last.current.result
+        last.current.result = it
+        extracted = extract-number it
+        if extracted && extracted != last.current.number
+          feedback!
+          set-options number: extracted
+  , [ready]
+  on-play = -> ready || set-ready true
+
+  if options.reader then reader-preview {video-ref, on-play} else ''
 
 export default: reader
