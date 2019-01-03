@@ -24,7 +24,7 @@ function in-range ref, issue
   ref.order-by \date \desc
   .where \date \>= issue.start
   .where \date \< issue.end
-  .limit 16
+  .limit 66
 
 function use-numbers issue, saved
   winning = use-shared-data \winning-numbers ->
