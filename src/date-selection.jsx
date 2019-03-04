@@ -2,7 +2,7 @@ import {h, useSharedState} from 'web-app-tools'
 import numberLists from './number-lists.json'
 
 const dateSelection = () => {
-  const [dateIndex, setDateIndex] = useSharedState('date-index')
+  const [dateIndex, setDateIndex] = useSharedState('date-index', 0)
 
   return (
     <div class="date-selection">
