@@ -1,25 +1,27 @@
 {
-  "name": "code-reducer",
+  "name": "number-reducer",
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "webpack-serve",
-    "build": "rimraf www/*js && webpack -p",
-    "pretest": "npm run build",
-    "test": "nyc --instrument false --source-map false -r text -r html -r json -r lcovonly node test"
+    "start": "webpack-dev-server",
+    "build": "rimraf www/*js && curl https://unpkg.com/ocrad.js@0.0.1/ocrad.js > www/ocrad-worker.js && webpack -p",
+    "pretest": "yarn run build",
+    "test": "jest --coverage"
   },
-  "repository": "dk00/code-reducer",
-  "license": "Unlicense",
-  "bugs": "https://github.com/dk00/code-reducer/issues",
-  "homepage": "https://github.com/dk00/code-reducer#readme",
-  "files": [
-    "www"
-  ],
+  "license": "Unlicensed",
+  "private": true,
+  "installConfig": {
+    "pnp": true
+  },
   "devDependencies": {
+    "@babel/runtime": "^7.3.4",
+    "livescript": "1.5.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "rimraf": "^2.6.2",
-    "web-app-tools": "next",
-    "webpack": "^4.26.1",
-    "webpack-command": "^0.4.2"
-  },
-  "private": true
+    "web-app-tools": "^0.1.0-beta.12",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
 }
