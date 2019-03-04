@@ -1,20 +1,15 @@
 import {h} from 'web-app-tools'
 import '../style'
-import {firebaseLogin} from './firebase'
-import {intro} from './components'
-import header from './header'
-import addNumber from './add-number'
-import reader from './reader'
-import invoices from './invoices'
+import numberInput from './number-input'
+import dateSelection from './date-selection'
+import matchResult from './match-result'
 
 const app = () =>
 <div>
-  <firebase-login render={intro}>
-    <header />
-    <add-number />
-    <reader />
-    <invoices />
-  </firebase-login>
+  <h1>發票號碼對獎</h1>
+  <number-input />
+  <date-selection />
+  <match-result />
 </div>
 
 export default app

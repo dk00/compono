@@ -9,3 +9,4 @@ server.js
 .firebaserc
 .DS_Store
 tmp
+number-lists.json

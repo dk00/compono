@@ -1,0 +1,21 @@
+.number-input
+  padding: 0.2rem
+  text-align: center
+  input
+    width: 11rem
+    background: #222
+    font-size: 2rem
+    text-align: right
+
+.date-selection
+  display: flex
+  > *
+    flex: 1
+    text-align: center
+    padding: 0.2rem
+    margin: 1px
+    background: #222
+    font-size: 1.3rem
+    transition: background 0.5s ease
+    &.active
+      background: darken($theme, 10%)
