@@ -17,12 +17,8 @@ const getNumberLists = () => {
 }
 
 const getCongig = webpackConfig({
-  name: 'Code Reducer',
-  workbox: {
-    navigateFallbackBlacklist: [
-      /^\/__/
-    ]
-  }
+  name: '發票對獎',
+  workbox: {}
 })
 
 module.exports = (...args) =>

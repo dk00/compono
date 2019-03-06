@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "rimraf www/*js && curl https://unpkg.com/ocrad.js@0.0.1/ocrad.js > www/ocrad-worker.js && webpack -p",
+    "profile": "webpack -p --profile --json > compilation-stats.json",
     "pretest": "yarn run build",
     "test": "jest --coverage"
   },
@@ -20,7 +21,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "rimraf": "^2.6.2",
-    "web-app-tools": "^0.1.0-beta.12",
+    "web-app-tools": "^0.1.0-beta.13",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"

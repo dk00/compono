@@ -4,24 +4,8 @@ import
   './utils': {local-today}
   './create-worker': create-worker
 
-import
-  'web-app-tools': {use-state, use-effect}
-
-
 options =
   actions: [update-document id: \user-input values: date: local-today!]
-
-function enable-HMR app, init
-  if module.hot && init then (props) ->
-    [config, set-config] = use-state {app}
-    use-effect (->
-      init (app) ->
-        console.log 'up'
-        set-config {app, toggle: !config.toggle}
-    ), []
-    console.log config.app
-    return h config.app, props
-  else app
 
 wrapped = if module.hot
   hot app, (replace-app) ->
