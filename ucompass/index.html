@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="index.css" inline />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="shortcut icon" href="/favicon.png" />
+  <title>Compass</title>
+</head>
+
+<body>
+  <svg id="compass-rose" class="compass-rose" width="100%" viewBox="0 0 320 320">
+    <circle cx="50%" cy="50%" r="50%" />
+    <polygon class="pointer" points="160,40 145,160 160,280 175,160" />
+    <polygon class="pointer" points="160,40 145,160 175,160" />
+    <text x="50%" y="7%">N</text>
+    <text x="5%" y="52%">W</text>
+    <text x="95%" y="52%">E</text>
+    <text x="50%" y="97%">S</text>
+  </svg>
+  <div id="info">
+  </div>
+
+  <script src="index.js" inline inline-compress="false"></script>
+</body>
+
+</html>

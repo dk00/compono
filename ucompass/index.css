@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --theme-color: #f3acb2;
+  --theme-secondary: #fdf5e2;
+  --theme-bg: #405535;
+}
+
+html, body {
+  background-color: #000;
+  color: #ccc;
+  overflow: hidden;
+}
+
+.compass-rose text {
+  fill: #ccc;
+  text-anchor: middle;
+}
+
+.compass-rose circle {
+  fill: var(--theme-bg);
+}
+
+.compass-rose .pointer {
+  fill: var(--theme-secondary);
+}
+
+.compass-rose .pointer:last-of-type {
+  fill: var(--theme-color);
+}
