@@ -4,7 +4,7 @@
   "description": "Minimalist HTML5 compass",
   "scripts": {
     "start": "browser-sync -w",
-    "build": "node build.js && cp manifest.json favicon.png public/",
+    "build": "mkdir -p public && node build.js && cp manifest.json favicon.png public/",
     "publish": "npm run build && netlify deploy"
   },
   "license": "Unlicense",
