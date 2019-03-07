@@ -4,8 +4,9 @@ import numberLists from './number-lists.json'
 const matchResult = () => {
   const [number=''] = useSharedState('number-input')
   const [dateIndex=0] = useSharedState('date-index')
-  const matchIndex = number.length === 3 &&
-    numberLists[dateIndex].numbers.findIndex(it => it.endsWith(number))
+  const tail = number.slice(-3)
+  const matchIndex = tail.length === 3 &&
+    numberLists[dateIndex].numbers.findIndex(it => it.endsWith(tail))
   const result = matchIndex >= 0? {
     grand: matchIndex <= 1,
     number: numberLists[dateIndex].numbers[matchIndex]

@@ -9,10 +9,11 @@ const numberInput = () => {
   return (
     <div class="number-input">
       <input
-        autoFocus
+        id="invoice-number"
         // For a numeric keyboard: https://stackoverflow.com/a/31619707/4578017
         type="tel" pattern="[0-9]*"
         placeholder="輸入發票號碼"
+        autocomplete="off"
         value={number}
         onInput={e => setNumber(wrap(e.target.value))}
       />

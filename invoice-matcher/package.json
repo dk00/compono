@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "rimraf www/*js && curl https://unpkg.com/ocrad.js@0.0.1/ocrad.js > www/ocrad-worker.js && webpack -p",
+    "build": "rimraf www/*js && webpack -p",
     "profile": "webpack -p --profile --json > compilation-stats.json",
     "pretest": "yarn run build",
     "test": "jest --coverage"
