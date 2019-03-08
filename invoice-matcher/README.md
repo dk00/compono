@@ -1,7 +1,13 @@
-# Code Reducer
+# 發票號碼對獎
 
-Save invoice numbers by scanning QR core & get prize notifications!
+https://tw-invoice-matcher.netlify.com/
 
-## Saved invoice numbers
+## 使用說明
 
-Numbers added to saved listed is persisted in browser storage.
+**3碼連續**
+
+請先選擇對獎期別. 輸入發票號碼後三碼後會自動比對中獎號碼, 顯示是否中獎.
+
+**掃描**
+
+電子發票專用, 用手機相機掃描發票上的 QR code 取得發票號碼, 日期自動對獎.

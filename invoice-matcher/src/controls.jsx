@@ -3,24 +3,28 @@ import numberLists from './number-lists.json'
 
 const modeSelection = () => {
   const [mode, setMode] = useSharedState('mode', '3digits')
+  const [, setNumber] = useSharedState('number-input')
   const [dateIndex, setDateIndex] = useSharedState('date-index', 0)
+  const changeMode = mode => {
+    setNumber('')
+    setMode(mode)
+  }
 
   return (
     <div class="controls">
       <div class="modes">
-        <label
-          for="invoice-number"
+        <div
           class={mode === '3digits'? 'active': ''}
-          onClick={() => setMode('3digits')} >
+          onClick={() => changeMode('3digits')} >
           3碼連續
           <span>連續輸入後三碼</span>
-        </label>
-        <label
+        </div>
+        <div
           class={mode === 'reader'? 'active': ''}
-        >
-          掃描(即將推出)
+          onClick={() => changeMode('reader')} >
+          掃描<sup>beta</sup>
           <span>用相機掃描發票條碼</span>
-        </label>
+        </div>
       </div>
       {mode === '3digits' &&
         <div class="date-selection">

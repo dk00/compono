@@ -1,17 +1,26 @@
-.inputs
-  position: fixed
-  bottom: 0
-  width: 100%
+.top
+  display: block
 
 .number-input
-  margin: 1rem 0
+  margin-bottom: 1rem
   padding: 0.2rem
   text-align: center
   input
-    width: 13rem
+    width: 15rem
     background: #222
     font-size: 2rem
-    text-align: right
+    text-align: center
+  .invoice-date
+    font-size: 1.2rem
+    margin: 0.25rem 0
+
+.reader
+  position: fixed
+  bottom: 0
+  z-index: -1
+  width: 100%
+  video
+    width: 100%
 
 .date-selection
   margin-top: 1px
@@ -21,17 +30,15 @@
 
 .modes
   flex: 1
-  label
+  span
     display: block
-    padding: 0.5rem
-    span
-      display: block
-      font-size: 1rem
-      opacity: 0.7
+    font-size: 1rem
+    opacity: 0.7
 
 .date-selection, .modes
   display: flex
   > *
+    padding: 0.5rem
     font-size: 1.2rem
     flex: 1
     background: #222
@@ -43,3 +50,4 @@
 
 .match-result
   text-align: center
+  min-height: 5.5rem

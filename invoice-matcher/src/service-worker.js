@@ -14,3 +14,12 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
 workbox.routing.registerNavigationRoute(
   workbox.precaching.getCacheKeyForURL('/'),
 )
+importScripts('https://unpkg.com/jsqr@1.2.0/dist/jsQR.js')
+
+self.addEventListener('message', ({data: {type, payload}, ports: [client]}) => {
+  if (type === 'read-qr-code') {
+    client.postMessage(
+      jsQR(payload.data, payload.width, payload.height)
+    )
+  }
+})

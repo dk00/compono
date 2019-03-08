@@ -5759,6 +5759,11 @@ symbol-observable@^1.2.0:
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
+taiwan-invoice@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/taiwan-invoice/-/taiwan-invoice-0.0.1.tgz#3a8196d1b99488215d4ef727d4e52575f5d2fb3c"
+  integrity sha512-0qXz2Wp1SBROxiVQW2wJroWp9/y+x6kmmzxZiU2ZkyiURdkh8Ev+DF2yGqDmiPWVD8BvDg6iqeXLYhSrOaypSQ==
+
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.1.tgz#4d297923c5a72a42360de2ab52dadfaaec00018e"
