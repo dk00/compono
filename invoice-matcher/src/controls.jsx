@@ -4,9 +4,11 @@ import numberLists from './number-lists.json'
 const modeSelection = () => {
   const [mode, setMode] = useSharedState('mode', '3digits')
   const [, setNumber] = useSharedState('number-input')
+  const [, setDate] = useSharedState('date')
   const [dateIndex, setDateIndex] = useSharedState('date-index', 0)
   const changeMode = mode => {
     setNumber('')
+    setDate('')
     setMode(mode)
   }
 

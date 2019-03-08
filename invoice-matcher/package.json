@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "rimraf www/*js && webpack -p",
+    "build": "rimraf www/*js && mkdir -p www && cp favicon.png www/ && webpack -p",
     "profile": "webpack -p --profile --json > compilation-stats.json",
     "pretest": "yarn run build",
     "test": "jest --coverage"
