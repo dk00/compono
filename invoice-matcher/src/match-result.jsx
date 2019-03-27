@@ -26,7 +26,7 @@ const matchNumber = (numberLists, {number, mode, date, dateIndex}) => {
   return {
     type: (date && list.length === 0)? index:
       matchIndex > 1? 'prize':
-      list[matchIndex]? 'grand':
+      list[matchIndex]? 'maybe-grand':
       'none',
     number: list[matchIndex]
   }

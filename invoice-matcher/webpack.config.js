@@ -11,7 +11,7 @@ const getNumberLists = () => {
     .slice(1, 3)
     .map(list => ({
       date: list.match(/\d{3}年.+月/)[0],
-      numbers: list.match(/\d{8}|(?<=\D)\d{3}(?=\D)/g).slice(1)
+      numbers: list.match(/\d{8}|(?<=\D)\d{3}(?=\D)/g)
     }))
   )
 }

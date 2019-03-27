@@ -18,11 +18,10 @@
     "@babel/runtime": "^7.3.4",
     "livescript": "1.5.0",
     "node-fetch": "^2.3.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "preact": "10.0.0-alpha.2",
     "rimraf": "^2.6.2",
     "taiwan-invoice": "^0.0.1",
-    "web-app-tools": "^0.1.0-beta.13",
+    "web-app-tools": "^0.1.0-beta.14",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"

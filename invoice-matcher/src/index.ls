@@ -1,5 +1,8 @@
 import
-  'web-app-tools': {start-app, h, stack-provider, update-document, hot}
+  'web-app-tools': {
+    start-app, stack-provider, hot
+    h, use-effect, update-document
+  }
   './app': app
   './utils': {local-today}
 
@@ -13,6 +16,10 @@ wrapped = if module.hot
 else app
 
 function powered
+  use-effect ->
+    polyfill!
+    request-idle-callback use-sentry
+  , []
   h stack-provider, options, h wrapped
 
 start-app powered
@@ -28,6 +35,3 @@ function polyfill
   window.request-idle-callback || window.request-idle-callback = ->
     set-timeout it, 33
   navigator.vibrate || navigator.vibrate = ->
-
-polyfill!
-request-idle-callback use-sentry
