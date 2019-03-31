@@ -7,14 +7,22 @@ const invoicePeriod = date => {
   return `${d.getFullYear() - 1911}年${month + 1 - month%2}`
 }
 
-const getListIndex = (numberLists, date) => {
+const getPrizeDate = date => {
+  const d = new Date(date)
+  const m = d.getMonth()
+  d.setMonth(m - m%2)
+  return d.toJSON()
+}
+
+const getListIndex = (numberLists, invoiceDate) => {
   const listDates = numberLists.map(it =>  {
     const [, year, month] = it.date.match(/(\d{3}).(\d{1,2})/)
     return `${+year + 1911}-${month.padStart(2, 0)}`
   })
-  const index = listDates.findIndex(it => date?.startsWith(it))
+  const prizeDate = getPrizeDate(invoiceDate)
+  const index = listDates.findIndex(it => prizeDate?.startsWith(it))
   return index >= 0? index:
-    date < listDates[0]? 'expired': 'future'
+    prizeDate < listDates[0]? 'expired': 'future'
 }
 
 const matchNumber = (numberLists, {number, mode, date, dateIndex}) => {
