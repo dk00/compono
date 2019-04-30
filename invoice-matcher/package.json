@@ -9,7 +9,7 @@
     "pretest": "yarn run build",
     "test": "jest --coverage"
   },
-  "license": "Unlicensed",
+  "license": "Unlicense",
   "private": true,
   "installConfig": {
     "pnp": true

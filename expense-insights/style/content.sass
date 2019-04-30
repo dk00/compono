@@ -1,0 +1,112 @@
+html
+  background: #222
+  color: #ccc
+
+body
+  background: #000d
+
+button
+  font-weight: bold
+
+$theme: #077
+$nav-height: 2.5rem
+
+=base-box
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+
+=fixed-bottom
+  position: fixed
+  bottom: 0
+  width: 100%
+
+#root
+  background: #222
+  padding-bottom: $nav-height
+
+.home .add-expense
+  +base-box
+  +fixed-bottom
+
+  bottom: calc(1px + #{$nav-height})
+
+  +mobile-keyboard-shown
+    bottom: 0
+
+form.add-expense
+  z-index: 1
+  border-top: 1px solid #222
+
+  input, button
+    height: 3rem
+    background: #121
+    flex: 1
+
+  input:not([type="date"])
+    font-size: 1.5rem
+
+  button
+    font-size: 1.5rem
+    padding: 0 1.5rem
+    flex: 0 0 auto
+
+  * + input
+    border-left: 1px solid #222
+
+  [type="submit"]
+    background: $theme
+
+  [type="number"]
+    font-size: 1.5rem
+    text-align: right
+
+.home .expense-list
+  padding-bottom: $nav-height
+
+  .month, .item
+    +base-box
+
+    padding: 0.5rem
+
+    .amount
+      margin-left: auto
+
+  .month
+    position: sticky
+    top: 0
+    background: #222
+
+  .item
+    background: #000
+
+.main-nav
+  +base-box
+  +fixed-bottom
+
+  padding: 0
+  background: #000600
+  border-top: 1px solid #222
+  font-size: 1.2rem
+  font-weight: bold
+
+  > *
+    +base-box
+
+    flex: 0 20%
+    height: $nav-height
+    justify-content: center
+
+    &.active
+      background: $theme
+
+  .coming-soon
+    font-size: 0.5rem
+    opacity: 0.3
+
+    &:after
+      content: 'coming soon'
+      display: block
+      flex: 100%
+      font-size: 0.5rem
+      text-align: center

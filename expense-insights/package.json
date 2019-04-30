@@ -1,0 +1,25 @@
+{
+  "name": "expense",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack -p && cp favicon.png www/",
+    "profile": "webpack -p --profile --json > compilation-stats.json",
+    "pretest": "yarn run build",
+    "test": "jest --coverage"
+  },
+  "license": "Unlicense",
+  "installConfig": {
+    "pnp": true
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.4.5",
+    "livescript": "1.5.0",
+    "preact": "^10.0.0-beta.0",
+    "rimraf": "^2.6.3",
+    "web-app-tools": "^0.1.0-beta.15",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.1"
+  }
+}
