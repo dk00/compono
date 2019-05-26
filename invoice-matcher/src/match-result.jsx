@@ -60,7 +60,7 @@ const matchResult = () => {
   }, [result.type === 'prize'])
 
   return (
-    <div class="match-result">
+    <div class={'match-result ' +  result.type}>
       <h1>{message[result.type]}</h1>
       {result.number &&
         <h2>{result.number}</h2>
