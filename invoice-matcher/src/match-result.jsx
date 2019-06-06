@@ -48,6 +48,9 @@ const message = {
   future: '尚未開獎'
 }
 
+const shareMe = () =>
+  navigator.share && navigator.share({url: location.toString(), title: '發票對獎'})
+
 const matchResult = () => {
   const [number=''] = useSharedState('number-input')
   const [date] = useSharedState('date')
@@ -61,6 +64,7 @@ const matchResult = () => {
 
   return (
     <div class={'match-result ' +  result.type}>
+      <button class="share" onClick={shareMe}>Share</button>
       <h1>{message[result.type]}</h1>
       {result.number &&
         <h2>{result.number}</h2>
