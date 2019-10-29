@@ -6,11 +6,13 @@ import matchResult from './match-result'
 import invoiceReader from './invoice-reader'
 
 const app = () =>
-  <label class="top">
+  <div>
     <match-result />
-    <number-input />
-    <controls />
+    <label class="top">
+      <number-input />
+      <controls />
+    </label>
     <invoice-reader />
-  </label>
+  </div>
 
 export default app
