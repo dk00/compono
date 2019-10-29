@@ -14,7 +14,6 @@ function setup-sentry
 if !global.process
   setup-sentry!
   get-install-prompt!
-  console.log('setup')
 
 options = actions: []
 
