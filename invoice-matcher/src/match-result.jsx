@@ -1,5 +1,5 @@
 import {h, useEffect, useSharedState} from 'web-app-tools'
-import numberLists from './number-lists.json'
+import useNumberLists from './use-number-lists'
 
 const invoicePeriod = date => {
   const d = new Date(date)
@@ -56,6 +56,7 @@ const matchResult = () => {
   const [date] = useSharedState('date')
   const [mode] = useSharedState('mode')
   const [dateIndex=0] = useSharedState('date-index')
+  const numberLists = useNumberLists()
   const result = matchNumber(numberLists, {number, mode, date, dateIndex})
 
   useEffect(() => {

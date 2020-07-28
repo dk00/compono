@@ -6,6 +6,9 @@ self.__precacheManifest = [].concat(
   {
     ...(self.__precacheManifest || []).find(it => it.url === 'index.html'),
     url: '/?source=pwa'
+  },
+  {
+    url: 'https://api.jsonbin.io/b/5f201ebd91806166284a9638/latest'
   }
 
 )

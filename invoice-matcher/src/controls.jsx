@@ -1,11 +1,12 @@
 import {h, useSharedState} from 'web-app-tools'
-import numberLists from './number-lists.json'
+import useNumberLists from './use-number-lists'
 
 const modeSelection = () => {
   const [mode, setMode] = useSharedState('mode', '3digits')
   const [, setNumber] = useSharedState('number-input')
   const [, setDate] = useSharedState('date')
   const [dateIndex, setDateIndex] = useSharedState('date-index', 0)
+  const numberLists = useNumberLists()
   const changeMode = mode => {
     setNumber('')
     setDate('')
