@@ -12,6 +12,7 @@ self.__precacheManifest = [].concat(
   }
 
 )
+self.__WB_MANIFEST = self.__precacheManifest
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
 
 workbox.routing.registerNavigationRoute(

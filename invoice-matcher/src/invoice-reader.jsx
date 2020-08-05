@@ -1,6 +1,7 @@
 import {h, useEffect, useSharedState} from 'web-app-tools'
 import cameraVideo from './camera-video'
 import {parseCode} from 'taiwan-invoice'
+import {saveInvoice} from './db'
 
 const readQRCode = imageData =>
   new Promise(resolve => {
@@ -26,9 +27,11 @@ const invoiceReader = () => {
     readQRCode(getImageData(0, 0, width / 2, height))
     .then(result => {
       if (result && result.data) {
-        const {serial, date} = parseCode(result.data)
+        const invoiceData = parseCode(result.data)
+        const {serial, date} = invoiceData
         setNumber(serial)
         setDate(date)
+        return saveInvoice(invoiceData)
       }
     })
     .catch(e => console.log(e))

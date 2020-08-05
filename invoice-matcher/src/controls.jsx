@@ -26,7 +26,7 @@ const modeSelection = () => {
           class={mode === 'reader'? 'active': ''}
           onClick={() => changeMode('reader')} >
           掃描<sup>beta</sup>
-          <span>用相機掃描發票條碼</span>
+          <span>掃描發票條碼 + 儲存</span>
         </div>
       </div>
       {mode === '3digits' &&
